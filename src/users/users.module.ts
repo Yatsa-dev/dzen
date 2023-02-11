@@ -1,6 +1,5 @@
 import * as bcrypt from 'bcrypt';
 import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
 import { BCRYPT } from './users.constanst';
 import { UsersService } from './users.service';
@@ -9,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from './users.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), ConfigModule, JwtModule],
+  imports: [TypeOrmModule.forFeature([User]), ConfigModule],
   providers: [
     {
       provide: BCRYPT,
