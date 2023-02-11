@@ -10,7 +10,7 @@ import {
 
 @Entity({
   orderBy: {
-    id: 'DESC',
+    createdAt: 'DESC',
   },
 })
 export class Comment {
