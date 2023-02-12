@@ -5,7 +5,6 @@ import {
   Entity,
   ManyToOne,
   JoinColumn,
-  CreateDateColumn,
 } from 'typeorm';
 
 @Entity({
@@ -24,14 +23,17 @@ export class Comment {
   @Column({ nullable: false })
   email: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @Column({ type: 'datetime' })
   createdAt: Date;
 
   @Column({ nullable: false })
   text: string;
 
   @Column({ nullable: true })
-  file: string;
+  image: string;
+
+  @Column({ type: 'mediumblob', nullable: true })
+  file: Buffer;
 
   @Column({ nullable: true })
   parentId: number;

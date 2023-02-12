@@ -6,13 +6,12 @@ export class CreateCommentDto {
   text: string;
 
   @IsOptional()
-  @IsString()
-  file?: string;
-
-  @IsOptional()
   @IsNumber()
   parentId?: number;
 
+  image?: string;
   owner?: number;
   email?: string;
+  file?: Buffer;
+  createdAt: Date;
 }

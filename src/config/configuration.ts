@@ -14,4 +14,7 @@ export default () => ({
   port: parseInt(process.env.PORT) || 3000,
   saltRounds: parseInt(process.env.SALT_ROUNDS),
   googleStorage: process.env.GOOGLE_STORAGE,
+  cloudName: process.env.CLOUD_NAME,
+  cloudApiKey: process.env.API_KEY,
+  cloudApiSecret: process.env.API_SECRET,
 });

@@ -5,11 +5,14 @@ import {
   Param,
   Post,
   Query,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { PayloadDto } from 'src/auth/dto/payload.dto';
 import { User } from 'src/decorators/user.decorator';
 import { CommentsService } from './comments.service';
@@ -23,8 +26,13 @@ export class CommentsController {
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe())
   @Post('create')
-  create(@User() user: PayloadDto, @Body() createCommentDto: CreateCommentDto) {
-    return this.commentsService.create(user.userId, createCommentDto);
+  @UseInterceptors(FileInterceptor('file'))
+  create(
+    @User() user: PayloadDto,
+    @Body() createCommentDto: CreateCommentDto,
+    @UploadedFile() file?: Express.Multer.File,
+  ) {
+    return this.commentsService.create(user.userId, createCommentDto, file);
   }
 
   @UseGuards(AuthGuard('jwt'))
