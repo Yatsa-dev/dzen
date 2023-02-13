@@ -3,6 +3,7 @@
 /node_modules
 .env
 yatsa-single-958f55502b17.json
+schema.drawio
 
 # Logs
 logs

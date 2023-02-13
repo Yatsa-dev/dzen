@@ -16,7 +16,7 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, { nullable: false, eager: true })
+  @ManyToOne(() => User, { nullable: false, eager: true, onDelete: 'CASCADE' })
   @JoinColumn({})
   owner: number;
 
